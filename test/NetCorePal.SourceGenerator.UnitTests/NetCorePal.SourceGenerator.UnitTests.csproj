@@ -7,11 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\DistributedTransactions.CAP.SourceGenerators\NetCorePal.Extensions.DistributedTransactions.CAP.SourceGenerators.csproj"/>
-        <ProjectReference Include="..\..\src\Domain.SourceGenerators\NetCorePal.Extensions.Domain.SourceGenerators.csproj"/>
+        <ProjectReference Include="..\..\src\DistributedTransactions.CAP.SourceGenerators\NetCorePal.Extensions.DistributedTransactions.CAP.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true"/>
+        <ProjectReference Include="..\..\src\Domain.Abstractions\NetCorePal.Extensions.Domain.Abstractions.csproj" ReferenceOutputAssembly="true"/>
+        <ProjectReference Include="..\..\src\Domain.SourceGenerators\NetCorePal.Extensions.Domain.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true"/>
+        <ProjectReference Include="..\..\src\NetCorePal.Extensions.Doc.SourceGenerators\NetCorePal.Extensions.Doc.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true"/>
         <ProjectReference Include="..\..\src\Repository.EntityFrameworkCore.SourceGenerators\NetCorePal.Extensions.Repository.EntityFrameworkCore.SourceGenerators.csproj"/>
+        
     </ItemGroup>
-
+    <Target Name="WriteMarkdownFiles" AfterTargets="Compile">
+        <ItemGroup>
+            <GeneratedMarkdownFiles Include="$(IntermediateOutputPath)Generated\*.g.md" />
+        </ItemGroup>
+        <Copy SourceFiles="@(GeneratedMarkdownFiles)" DestinationFolder="GeneratedMarkdown" />
+    </Target>
     <ItemGroup>
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk"/>
