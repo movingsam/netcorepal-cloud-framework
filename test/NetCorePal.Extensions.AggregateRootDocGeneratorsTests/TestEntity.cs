@@ -1,7 +1,7 @@
 using MediatR;
 using NetCorePal.Extensions.Domain;
 
-namespace NetCorePal.SourceGenerator.UnitTests;
+namespace NetCorePal.Extensions.AggregateRootDocGeneratorsTests;
 
 public partial record TestEntityId : IInt64StronglyTypedId;
 
@@ -50,7 +50,3 @@ public class TestEntityNameChangeHandler(IMediator mediator) : IDomainEventHandl
 
 
 public record TestCommandEvent(TestEntity TestEntity) :IDomainEvent;
-
-
-
-

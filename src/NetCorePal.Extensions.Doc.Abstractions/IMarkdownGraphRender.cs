@@ -4,3 +4,8 @@ public interface IMarkdownGraphRender
 {
     string MarkdownRender();
 }
+
+public interface ISourceGeneratorJsonRender
+{
+    string JsonRender();
+}
