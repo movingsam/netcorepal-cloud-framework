@@ -3,30 +3,37 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
+        <EnforceExtendedAnalyzerRules>false</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <AnalyzerLanguage>cs</AnalyzerLanguage>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="MediatR" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
-        <PackageReference Include="Microsoft.Net.Compilers.Toolset">
+        <PackageReference Include="MediatR"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.Text.Json" />
+        <!--        <PackageReference Include="Microsoft.Net.Compilers.Toolset">-->
+        <!--            <PrivateAssets>all</PrivateAssets>-->
+        <!--            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+        <!--        </PackageReference>-->
+        <PackageReference Include="System.Text.Json"/>
     </ItemGroup>
     <ItemGroup>
-        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Properties\" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\NetCorePal.Extensions.Doc.Abstractions\NetCorePal.Extensions.Doc.Abstractions.csproj" />
+        <Folder Include="Properties\"/>
     </ItemGroup>
 
 </Project>

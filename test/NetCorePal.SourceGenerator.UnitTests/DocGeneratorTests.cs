@@ -80,13 +80,14 @@ public class DocGeneratorTests
 
 
         // 创建生成器
-        var generator = new EventHandlerDocGenerators();
+        var generator = new DocJsonGenerators();
         var driver = CSharpGeneratorDriver.Create(generator);
 
         // 运行生成器
         driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var diagnostics);
-
-
+        // TestEntityAggregateRoot aggregate = new TestEntityAggregateRoot();
+        // var json =  aggregate.JsonRender();
+        ;
         // 验证生成的代码
         // var generatedCode = outputCompilation.SyntaxTrees.Last().ToString();
         // var output = new TestEntityMDOutput();

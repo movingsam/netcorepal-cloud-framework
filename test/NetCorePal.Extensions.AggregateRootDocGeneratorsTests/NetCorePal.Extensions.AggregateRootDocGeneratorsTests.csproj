@@ -6,10 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-        <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
-    </PropertyGroup>
+<!--    <PropertyGroup>-->
+<!--        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>-->
+<!--        <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>-->
+<!--    </PropertyGroup>-->
 <!--    <ItemGroup>-->
 <!--        <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />-->
 <!--    </ItemGroup>-->
@@ -18,12 +18,7 @@
       <ProjectReference Include="..\..\src\Domain.Abstractions\NetCorePal.Extensions.Domain.Abstractions.csproj" />
       <ProjectReference Include="..\..\src\Domain.SourceGenerators\NetCorePal.Extensions.Domain.SourceGenerators.csproj"
                         ReferenceOutputAssembly="false"  OutputItemType="Analyzer" />
-      <ProjectReference Include="..\..\src\NetCorePal.Extensions.Doc.Abstractions\NetCorePal.Extensions.Doc.Abstractions.csproj" />
       <ProjectReference Include="..\..\src\NetCorePal.Extensions.Doc.SourceGenerators\NetCorePal.Extensions.Doc.SourceGenerators.csproj" ReferenceOutputAssembly="false"  OutputItemType="Analyzer"  />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Generated\NetCorePal.Extensions.Doc.SourceGenerators\" />
     </ItemGroup>
 
 </Project>

@@ -42,7 +42,6 @@
   <Folder Name="/src/Domain/">
     <Project Path="src\Domain.Abstractions\NetCorePal.Extensions.Domain.Abstractions.csproj" />
     <Project Path="src\Domain.SourceGenerators\NetCorePal.Extensions.Domain.SourceGenerators.csproj" />
-    <Project Path="src\NetCorePal.Extensions.Doc.Abstractions\NetCorePal.Extensions.Doc.Abstractions.csproj" Type="Classic C#" />
     <Project Path="src\NetCorePal.Extensions.Doc.SourceGenerators\NetCorePal.Extensions.Doc.SourceGenerators.csproj" Type="Classic C#" />
     <Project Path="src\Repository.Abstractions\NetCorePal.Extensions.Repository.Abstractions.csproj" />
     <Project Path="src\Repository.EntityFrameworkCore.Identity\NetCorePal.Extensions.Repository.EntityFrameworkCore.Identity.csproj" />

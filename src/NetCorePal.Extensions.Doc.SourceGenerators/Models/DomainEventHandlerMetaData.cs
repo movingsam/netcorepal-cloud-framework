@@ -2,17 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using NetCorePal.Extensions.Doc.SourceGenerators.Abstractions;
 
 namespace NetCorePal.Extensions.Doc.SourceGenerators.Models;
 
-public class DomainEventHandlerMetaData
+public class DomainEventHandlerMetaData:ISgMetaData
 {
     public DomainEventHandlerMetaData(INamedTypeSymbol namedTypeSymbol, SemanticModel semanticModel)
     {
         Name = namedTypeSymbol.Name;
         Namespace = namedTypeSymbol.ContainingNamespace.ToDisplayString();
         FullName = namedTypeSymbol.ToDisplayString();
-        EventType = namedTypeSymbol.Interfaces.SingleOrDefault(x=>x.Name.Equals("IDomainEventHandler"))?.TypeArguments[0].ToDisplayString() ?? string.Empty;
+        EventType = namedTypeSymbol.Interfaces.SingleOrDefault(x => x.Name.Equals("IDomainEventHandler"))
+            ?.TypeArguments[0].ToDisplayString() ?? string.Empty;
         CommandTypes = [];
         GenerateCommandTypes(namedTypeSymbol, semanticModel);
     }
@@ -47,15 +49,16 @@ public class DomainEventHandlerMetaData
             .OfType<InvocationExpressionSyntax>();
         foreach (var invocation in invocations)
         {
-            var symbolInfo = semanticModel.GetSymbolInfo(invocation.Expression.Parent!);
-            if (symbolInfo.Symbol is IMethodSymbol methodSymbol)
+            // 检查是否是成员访问表达式（例如：_mediator.Send）
+            if (invocation.Expression is MemberAccessExpressionSyntax { Name.Identifier.ValueText: "Send" })
+                // 获取成员访问的父级类型
             {
-                var className = methodSymbol.ContainingType.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
-                var methodName = methodSymbol.Name;
-                if (className.Contains("IMediator") && methodName == "Send")
+                var arguments = invocation.ArgumentList.Arguments;
+                foreach (var arugment in arguments)
                 {
-                    var eventArg = methodSymbol.TypeParameters[0].ToDisplayString();
-                    CommandTypes.Add(eventArg);
+                    var argumentType = semanticModel.GetTypeInfo(arugment.Expression);
+                    if (argumentType.Type == null) continue;
+                    CommandTypes.Add(argumentType.Type!.ToDisplayString());
                 }
             }
         }

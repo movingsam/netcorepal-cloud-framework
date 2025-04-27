@@ -1,0 +1,52 @@
+{
+  "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity",
+  "namespace": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests",
+  "name": "TestEntity",
+  "properties": [
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.Name",
+      "name": "Name",
+      "type": "string"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.Count",
+      "name": "Count",
+      "type": "int"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.TestString",
+      "name": "TestString",
+      "type": "string"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.TestInt",
+      "name": "TestInt",
+      "type": "int"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.CreatedTime",
+      "name": "CreatedTime",
+      "type": "System.DateTime"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.UpdatedTime",
+      "name": "UpdatedTime",
+      "type": "System.DateTime"
+    },
+    {
+      "fullName": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntity.TestEntityId",
+      "name": "TestEntityId",
+      "type": "NetCorePal.Extensions.AggregateRootDocGeneratorsTests.TestEntityId"
+    }
+  ],
+  "methods": [
+    {
+      "name": "ChangeName",
+      "returnType": "void",
+      "parameters": [
+        "string"
+      ],
+      "domainEvent": true
+    }
+  ]
+}
